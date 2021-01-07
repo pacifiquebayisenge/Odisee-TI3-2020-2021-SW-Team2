@@ -11,5 +11,7 @@
 
 ### Te testen app:
 
-[Uw vent onder de sloef](https://uw-vent-onder-de-sloef.web.app/)
+[Uw vent onder de sloef](https://uw-vent-onder-de-sloef.web.app/) ( umods)
+
+App waarin gebbruikers huishoudelijke taken kunnen toewijzen en vervullen onder gezinleden, jeugdbeweging, groepswerk, organisaties, etc
 
