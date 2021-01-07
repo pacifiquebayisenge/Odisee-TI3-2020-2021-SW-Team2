@@ -1,7 +1,7 @@
 var {Given,  When, Then, BeforeAll} = require('@cucumber/cucumber');  
   
   BeforeAll(function(){  
-    return console.log("BeforeAll - navigeer naar de pagina");  
+    return console.log('BeforeAll - navigeer naar de pagina');  
   });
 
   Given(': de gebruiker is niet ingelogd', function () {
@@ -14,25 +14,28 @@ var {Given,  When, Then, BeforeAll} = require('@cucumber/cucumber');
     return console.log('Given - bevindt zich op  de loginpagina van de applicatie');  
   });
 
-
-  When(': de gebruiker het juiste email adress invoert', function () {
+  When(': de gebruiker het juiste {string} invoert', function (string) {
+    string = 'team2@odisee.be'
     // Write code here that turns the phrase above into concrete actions
-    return console.log('When - de gebruiker het juiste email adress invoert');
+    return console.log('When - de gebruiker het juiste email adress invoert ' + string);
   });
 
-  When(': de gebruiker een ongeldig email adress invoert', function () {
+  When(': de gebruiker een ongeldig {string} invoert', function (string) {
+    string = 'fout@fout.fout'
     // Write code here that turns the phrase above into concrete actions
-    return console.log('When - de gebruiker een ongeldig email adress invoert');
+    return console.log('When - de gebruiker een ongeldig email adress invoert ' + string );
   });
-  
-  When(': en het juiste wachtwoord invoert', function () {
-    // Write code here that turns the phrase above into concrete actions
-    return console.log('When - en het juiste wachtwoord invoert');
-  });  
 
-  When(': een ongeldig wachtwoord invoert', function () {
+  When(': het juiste {string} invoert', function (string) {
+    string = 'odisee2'
     // Write code here that turns the phrase above into concrete actions
-    return console.log('When - een ongeldig wachtwoord invoert');
+    return console.log('When - het juiste wachtwoord invoert ' + string);
+  });
+
+  When(': een ongeldig {string} invoert', function (string) {
+    string = 'fout'
+    // Write code here that turns the phrase above into concrete actions
+    return console.log('When - een ongeldig wachtwoord invoert ' + string);
   });
   
   When(': op de login knop drukt', function () {
