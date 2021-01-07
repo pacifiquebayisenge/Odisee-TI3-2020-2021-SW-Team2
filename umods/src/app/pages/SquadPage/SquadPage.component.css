@@ -1,0 +1,78 @@
+.fab-container {
+
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  z-index: 999;
+}
+
+table {
+  width: 100%;
+}
+
+tr.detail-row {
+  height: 0;
+}
+
+tr.element-row:not(.expanded-row):hover {
+  background: whitesmoke;
+}
+
+tr.element-row:not(.expanded-row):active {
+  background: #efefef;
+}
+
+.element-row td {
+  border-bottom-width: 0;
+}
+
+.element-detail {
+  overflow: hidden;
+  display: flex;
+}
+
+
+
+
+
+.element-description {
+  padding: 16px;
+  width: 45vw;
+  max-width: 50vw;
+  word-wrap: break-word;
+  text-align: left;
+
+}
+
+.element-description-author {
+  opacity: 0.5;
+}
+
+.element-position {
+  padding: 16px;
+  width: min-content;
+  max-width: 25vw;
+  display: flex;
+}
+
+.taskbtn {
+  margin: 0.5em;
+
+}
+
+
+.closedTask {
+
+  text-decoration: line-through wavy;
+  color: gray;
+}
+
+.taskTitle {
+  word-break: break-all;
+  padding: 1em;
+}
+
+th.mat-header-cell,
+tr.mat-row {
+  text-align: center;
+}

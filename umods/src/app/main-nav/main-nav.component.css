@@ -1,0 +1,82 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 180px;
+
+}
+
+.sidenav .mat-toolbar {
+  background: #673ab7;
+  color: white;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.hidden {
+  display: none;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+mat-toolbar a {
+  display: inline-block;
+  margin-right: 1em;
+  color: white;
+  text-decoration: none;
+
+}
+
+span {
+
+  text-align: center;
+  width: 100%;
+}
+
+.hambugerIcon {
+  position: absolute;
+}
+
+.accCont {
+  display: flex;
+  justify-content: space-around;
+  margin: 1em 0em;
+
+}
+
+.box {
+  height: 20vw;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  padding: 0.5em;
+  border: 1px solid lightgray;
+
+}
+
+.pic {
+  background-color: lightsteelblue;
+  width: 20vw;
+}
+
+.info {
+  width: 30vw;
+}
+
+.middle {
+  text-align: center;
+}
+
+@media (min-width: 600px) {
+
+  mat-sidenav.mat-sidenav.sidenav {
+    display: none;
+  }
+}

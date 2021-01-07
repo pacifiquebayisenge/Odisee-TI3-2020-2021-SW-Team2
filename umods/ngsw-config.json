@@ -1,0 +1,78 @@
+{
+  "$schema": "./node_modules/@angular/service-worker/config/schema.json",
+  "index": "/index.html",
+
+  "assetGroups": [{
+      "name": "app",
+      "installMode": "prefetch",
+      "resources": {
+        "files": [
+          "/app/pages/CalenderPage/CalenderPage.component.html",
+          "/favicon.ico",
+          "/index.html",
+          "/manifest.webmanifest",
+          "/*.css",
+          "/*.js",
+          "/*.ts",
+          "/*.html",
+          "/**/*.css",
+          "/**/*.js",
+          "/**/*.ts",
+          "/**/*.html",
+          "/app/Service/*.ts"
+
+        ],
+        "urls": [
+          "https://fonts.googleapis.com/css?family=Roboto:300,400,500&amp;display=swap",
+          "https://fonts.googleapis.com/css?family=Material+Icons",
+          "https://uw-vent-onder-de-sloef.firebaseio.com",
+          "uw-vent-onder-de-sloef.firebaseapp.com",
+          "uw-vent-onder-de-sloef.appspot.com",
+          "/calender-page"
+        ]
+      }
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "resources": {
+        "files": [
+          "/assets/**",
+          "/*.(eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani)"
+        ],
+        "urls": [
+
+        ]
+      }
+    },
+    {
+      "name": "pages",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "resources": {
+        "files": [
+          "/app/pages/**"
+        ]
+      }
+    }
+  ],
+  "dataGroups": [{
+    "name": "firebase",
+    "urls": [
+
+      "https://uw-vent-onder-de-sloef.firebaseio.com",
+      "uw-vent-onder-de-sloef.firebaseapp.com",
+      "uw-vent-onder-de-sloef.appspot.com",
+      "/app/Service/*.ts"
+    ],
+    "cacheConfig": {
+      "strategy": "freshness",
+      "maxSize": 20,
+      "maxAge": "1h",
+      "timeout": "600s"
+    }
+
+
+  }]
+}
