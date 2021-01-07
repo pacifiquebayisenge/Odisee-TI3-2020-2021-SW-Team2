@@ -11,5 +11,5 @@
 
 ### Te testen app:
 
-(Uw vent onder de sloef)[https://uw-vent-onder-de-sloef.web.app/] (Umods)
+(Uw vent onder de sloef)[https://uw-vent-onder-de-sloef.web.app/] 
 
