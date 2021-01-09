@@ -2,15 +2,15 @@
 
 Functionaliteit: een taak aanmaken
 
- Achtergrond:
+    Achtergrond:
     Gegeven : de gebruiker is ingelogd
-    En : bevindt zich op  de homepagina van de applicatie
-
-Scenario: een taak aanmaken met de naam "A" 
+    En : bevindt zich op  de pagina van de gekozen groep
 
 
-Als: ik een nieuwe taak maakt met een unieke titel en beschrijving 
+    Scenario: een taak aanmaken
 
-Dan: zou een bevestigingsprompt moeten verschijnen 
+    Als : de gr
 
-En: ik zou de nieuwe taak moeten kunnen zien 
+    Dan : zou een bevestigingsprompt moeten verschijnen 
+
+    En : ik zou de nieuwe taak moeten kunnen zien 
