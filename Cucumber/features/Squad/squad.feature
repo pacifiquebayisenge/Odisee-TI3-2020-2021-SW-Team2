@@ -31,6 +31,15 @@ Functionaliteit:  een squad beheren
     Als : de gebruiker een squad verwijdert 
     Dan : wordt de pagina herladen en is de verwijderde squad niet meer zichtbaar
 
+    Scenario: een lid toevoegen in een squad
+    Als : de gebruiker een 'nieuw lid' toevoegd bij een squad
+    Dan : wordt de pagina herladen en en is het aantal leden bij de gewijzigde squad verhoogd met één
+
+    
+    Scenario: een lid verwijderen in een squad
+    Als : de gebruiker een 'nieuw lid' verwijdert bij een squad
+    Dan : wordt de pagina herladen en en is het aantal leden bij de gewijzigde squad vermindert met één
+
     
      
 

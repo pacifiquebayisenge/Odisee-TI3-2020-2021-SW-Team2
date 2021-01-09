@@ -64,3 +64,23 @@ BeforeAll(function(){
     return console.log('wordt de pagina herladen en is de verwijderde squad niet meer zichtbaar');
   });
 
+  When(': de gebruiker een {string} toevoegd bij een squad', function (string) {
+    // Write code here that turns the phrase above into concrete actions
+    return console.log(' de gebruiker een "nieuw lid" toevoegd bij een squad');
+  });
+
+  Then(': wordt de pagina herladen en en is het aantal leden bij de gewijzigde squad verhoogd met één', function () {
+    // Write code here that turns the phrase above into concrete actions
+    return console.log('wordt de pagina herladen en en is het aantal leden bij de gewijzigde squad verhoogd met één');
+  });
+
+  When(': de gebruiker een {string} verwijdert bij een squad', function (string) {
+    // Write code here that turns the phrase above into concrete actions
+    return console.log('de gebruiker een "nieuw lid" verwijdert bij een squad');
+  });
+
+  Then(': wordt de pagina herladen en en is het aantal leden bij de gewijzigde squad vermindert met één', function () {
+    // Write code here that turns the phrase above into concrete actions
+    return console.log('wordt de pagina herladen en en is het aantal leden bij de gewijzigde squad vermindert met één');
+  });
+
