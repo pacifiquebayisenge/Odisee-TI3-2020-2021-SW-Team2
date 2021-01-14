@@ -23,6 +23,8 @@
   <canvas id="chart"></canvas>
 </div>
 
+
+
 <header class="page-header"> {{AllCurrentMembers}} Members </header>
 <div class="divChart2">
   <canvas id="chart2"></canvas>
@@ -38,12 +40,16 @@
 
 <div class="cards-container " *ngIf="mostClosedTask != ''">
 
+
+
+
   <div class="card mostClosed">
     <header class="card-header">
       <h2>Most closed tasks</h2>
     </header>
 
     <div class="card-body">{{mostClosedTask}}</div>
+
   </div>
 
   <div class="card mostOpen">
@@ -62,8 +68,10 @@
     <div class="card-body">{{mostTaskMember}}</div>
   </div>
 
+
   <div class="summary-container">
     This was calculated in ratio of all the tasks to all members of this squad
   </div>
+
 
 </div>

@@ -2,7 +2,7 @@ import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Forms } from '../../service/forms.service';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { Router, } from '@angular/router';
 import { CrudService } from 'src/app/service/crud.service';
 
 //import { from } from 'rxjs';

@@ -1,6 +1,4 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder, Validators, Form } from '@angular/forms';
-import { ThemePalette } from '@angular/material/core';
 import { Forms } from '../../service/forms.service';
 import { MatDialogRef } from '@angular/material/dialog';
 import { CurrentUser } from 'src/app/service/currentUser.service';
@@ -38,12 +36,6 @@ export class TaskFormComponent implements OnInit {
 
   async onSubmit() {
 
-
-
-
-
-
-
     // get err msg element from the DOM
     let errDisplay = this.errMsg.nativeElement
 
@@ -51,7 +43,9 @@ export class TaskFormComponent implements OnInit {
 
     // get register output
     this.errOutput = this.formService.taskErrOutput
+    this.onClose()
 
+    /*
     // if register succesfull
     if (this.formService.taskSucces) {
 
@@ -81,12 +75,18 @@ export class TaskFormComponent implements OnInit {
 
     }
 
+    */
+
   }
 
   onClose() {
 
     this.formService.oncloseTask();
     this.dialogRef.close();
+
+    this.formService.closeTaskForm.asObservable().subscribe(() => {
+      this.dialogRef.close();
+    })
 
   }
 
@@ -97,17 +97,17 @@ export class TaskFormComponent implements OnInit {
     // get all squads form current user : already gotten
     this.allSquads = this.currentUser.squads;
 
+    console.log(this.allSquads);
     // look in the already gotten squadlist of the current user
     for (let i: number = 0; i < this.allSquads.length; i++) {
 
       // is clicked squad id is equal to squadid in the already gotten list
       if (this.allSquads[i][0] == this.squadId) {
 
-
-
         for (let j: number = 0; j < this.allSquads[i][1].Members.length; j++) {
           // get this squad members
-          this.membersNames.push(this.allSquads[i][1].Members[j].name)
+          this.membersNames.push(this.allSquads[i][1].Members[j].name + ' ' + this.allSquads[i][1].Members[j].lastname)
+          console.log(this.allSquads[i][1].Members[j])
         }
       }
     }

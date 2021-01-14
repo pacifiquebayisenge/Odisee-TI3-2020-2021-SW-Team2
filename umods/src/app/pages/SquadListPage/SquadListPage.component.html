@@ -3,10 +3,14 @@
 
 <div class="page-content">
 
+
+
+
   <div class="summary-container" *ngIf="noSquadFound == true">
     You are currently not registered in any squad. Please make one to start to use this awesome app.
   </div>
-  <img *ngIf="this.currentUser.squads.length == 0 && noSquadFound != true" src="./../../../assets/gifs/loading.gif">
+  <img *ngIf="this.currentUser.squads.length == 0 && noSquadFound != true" src="./../../../assets/gifs/loading.gif"
+    alt="loading-gif">
   <!--<p><a href="https://giphy.com/gifs/iGwIFdyvV3Xrimie3h">via GIPHY</a></p>-->
   <div class="list ">
 

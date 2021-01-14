@@ -18,12 +18,18 @@
   z-index: 1;
 }
 
+mat-sidenav-content {
+  background-color: white;
+}
+
 .hidden {
   display: none;
 }
 
 .spacer {
-  flex: 1 1 auto;
+  text-align: left;
+  width: fit-content;
+  margin: 0 3em;
 }
 
 mat-toolbar a {

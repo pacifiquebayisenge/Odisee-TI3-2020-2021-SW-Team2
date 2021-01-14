@@ -1,12 +1,11 @@
-import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { Naming } from '../../service/page.service';
 import { CurrentUser } from '../../service/currentUser.service';
 import { Forms } from '../../service/forms.service'
-import { Router, NavigationEnd } from '@angular/router';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/service/auth.service';
-import { BehaviorSubject } from 'rxjs';
 import { trigger, transition, style, animate } from '@angular/animations';
+import { CrudService } from 'src/app/service/crud.service';
 
 @Component({
   selector: 'SquadListPage',
@@ -35,24 +34,25 @@ export class SquadListPageComponent implements OnInit {
     public currentUser: CurrentUser,
     private router: Router,
     private authService: AuthService,
+    private crudService: CrudService
   ) {
 
 
 
   }
 
+
+
+
+
   // all squads where current user is part of
   squads: Array<any>;
   squadLoaded: boolean = false
 
 
-
-
-
-
-
   createSquad() {
     this.formService.squadPopup()
+
   }
 
   ngOnDestroy() {
@@ -77,9 +77,14 @@ export class SquadListPageComponent implements OnInit {
   }
 
 
+
+
   async ngOnInit() {
 
-    console.log("d")
+
+
+
+    //this.authService.userDataRefresh(this.currentUser.id)
 
     // method to change page tittle to the page name
     this.service.changeTittle(this.pageTittle)
@@ -100,40 +105,9 @@ export class SquadListPageComponent implements OnInit {
 
     })
 
-
-
-
-
-
-
-
-
-
-
-    // console.log(this.squads);
-
-
-
-
-    // get totaal # of squads where current user is part of
-    // this.countSquads = this.squads.length;
-
-
-
-
+    this.formService.closeSquadForm.next(true);
 
   }
-
-  changeLocation(locationData) {
-
-    // save current route first
-    const currentRoute = this.router.url;
-
-    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-      this.router.navigate([currentRoute]); // navigate to same route
-    });
-  }
-
 
 
 

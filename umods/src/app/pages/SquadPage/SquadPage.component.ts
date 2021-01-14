@@ -1,17 +1,13 @@
-import { Component, OnInit, OnChanges, ViewChild, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { TaskFormComponent } from '../../popups/task-form/task-form.component';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { CrudService } from '../../service/crud.service';
-import { Forms } from '../../service/forms.service'
-import { element } from 'protractor';
+import { Forms } from '../../service/forms.service';
 import { MatTable } from '@angular/material/table';
 import { CurrentUser } from 'src/app/service/currentUser.service';
 import { Naming } from 'src/app/service/page.service';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
-import { threadId } from 'worker_threads';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'squad-page',
@@ -33,7 +29,8 @@ export class SquadPageComponent implements OnInit {
     private route: ActivatedRoute,
     private crudService: CrudService,
     private currentUser: CurrentUser,
-    private titleService: Naming) { }
+    private titleService: Naming,
+    private router: Router) { }
 
 
 
@@ -42,9 +39,13 @@ export class SquadPageComponent implements OnInit {
   squadId: string
   SquadData: Array<any> = [];
 
-
+  sq = this.currentUser.squads
   async ngOnInit() {
-
+    // if squads data not loaded redirect tot home page
+    if (this.sq.length == 0) {
+      console.log("empty redirect me ")
+      this.router.navigate(['']);
+    }
     // get the squad id that is given in the url
     this.route.paramMap
       .subscribe(params => {
@@ -173,7 +174,6 @@ export class SquadPageComponent implements OnInit {
   oncomplete(taskId) {
 
     this.crudService.updateTask(this.squadId, taskId)
-
   }
 
   async createTask() {
@@ -181,6 +181,7 @@ export class SquadPageComponent implements OnInit {
     this.formService.taskPopup(this.squadId, taskEdit)
 
   }
+
 
 
   // get squad data by id of already gotten squads list where current user is part of 

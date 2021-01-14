@@ -4,7 +4,6 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { CurrentUser } from './currentUser.service'
 import { AngularFirestore } from '@angular/fire/firestore';
-import { trigger } from '@angular/animations';
 import { CrudService } from './crud.service';
 import { AngularFireModule } from '@angular/fire';
 import { FirebaseApp } from '@angular/fire';
@@ -167,7 +166,8 @@ export class AuthService {
         let member = {
 
           id: squads[i][1].Members[j],
-          name: await this.crudService.GetUserFirstnameById(squads[i][1].Members[j])
+          name: await this.crudService.GetUserFirstnameById(squads[i][1].Members[j]),
+          lastname: await this.crudService.GetUserLastnameById(squads[i][1].Members[j])
         }
         MemberNames.push(member);
       }
@@ -207,11 +207,11 @@ export class AuthService {
       if (this.currentUserService.squads.length == 0) {
         this.noSqFound.next(true);
         console.log("no squad ")
-      }else {
+      } else {
         this.noSqFound.next(false);
       }
 
-      
+
 
     })
 
@@ -234,13 +234,14 @@ export class AuthService {
 
         // dublele aray to get the id too
         if (element.type === "added") {
+
           squads.push([element.doc.id, element.doc.data()])
 
 
         }
         // dublele aray to get the id too
         if (element.type === "modified") {
-
+          console.log("mod")
           for (let i: number = 0; i < squads.length; i++) {
             if (squads[i][0] == element.doc.id) {
               squads[i] = [element.doc.id, element.doc.data()]
@@ -248,12 +249,12 @@ export class AuthService {
             }
           }
 
-          console.log("mod")
+
 
 
         }
         if (element.type === "removed") {
-          console.log("removed" + element.doc.data())
+
           for (let i: number = 0; i < squads.length; i++) {
             if (element.doc.id == squads[i][0]) {
               squads.splice(i, 1)
@@ -264,7 +265,7 @@ export class AuthService {
 
         }
       })
-      console.log(squads)
+
 
       // format the squad data into readable info
       this.formatData(uid, squads)
@@ -285,9 +286,11 @@ export class AuthService {
 
   }
 
-  userDataRefresh() {
+  userDataRefresh(id) {
+
+
+
+
 
   }
-
-
 }

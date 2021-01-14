@@ -29,6 +29,7 @@ tr.element-row:not(.expanded-row):active {
 .element-detail {
   overflow: hidden;
   display: flex;
+  justify-content: space-around;
 }
 
 
@@ -68,11 +69,33 @@ tr.element-row:not(.expanded-row):active {
 }
 
 .taskTitle {
-  word-break: break-all;
+  word-break: break-word;
   padding: 1em;
 }
 
 th.mat-header-cell,
 tr.mat-row {
   text-align: center;
+}
+
+.assign {
+  overflow: hidden;
+  display: inline-block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-break: break-word;
+  width: 9em;
+  /* vertical-align: middle; */
+  margin: 1em 1em;
+}
+
+
+@media screen and (min-width: 1020px) {
+  .assign {
+    width: 20em;
+  }
+
+  .taskTitle {
+    width: 70em;
+  }
 }

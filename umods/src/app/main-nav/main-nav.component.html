@@ -29,8 +29,31 @@
         (click)="drawer.toggle()" *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>{{tittle}}</span>
+      <button class="spacer " type="button" mat-icon-button *ngIf="!(isHandset$ | async) && (tittle == 'Squad List')"
+        [matMenuTriggerFor]="menu">
+        <mat-icon aria-label="Side nav toggle icon">more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="createSquad()">
+
+          <mat-icon aria-label="Side nav toggle icon">edit</mat-icon>
+          <span>New</span>
+        </button>
+
+        <button mat-menu-item (click)="editSquad() ">
+          <mat-icon aria-label="Side nav toggle icon">open_in_new</mat-icon>
+          <span>Edit</span>
+        </button>
+
+        <button mat-menu-item (click)="deleteSquad()">
+          <mat-icon aria-label="Side nav toggle icon">delete</mat-icon>
+          <span>Delete</span>
+        </button>
+
+      </mat-menu>
       <span *ngIf="!(isHandset$ | async)" class="spacer"></span>
+      <span>{{tittle}}</span>
+
 
       <a *ngIf="!(isHandset$ | async)" routerLink="/">Squads</a>
       <a *ngIf="!(isHandset$ | async)" routerLink="/calender-page">Calender</a>

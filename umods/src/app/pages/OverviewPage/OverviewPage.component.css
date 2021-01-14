@@ -1,17 +1,17 @@
 .divChart {
-  margin: 1em;
+  margin: auto;
   max-width: 90vw;
 }
 
 .divChart2 {
-  margin: 1em;
+  margin: auto;
   max-width: 90vw;
-  max-height: 90vw;
-  height: 90vw;
+  max-height: 90vh;
+  height: 50vh;
 
 }
 
-canvas {}
+
 
 .flex {
   display: flex;
@@ -101,6 +101,7 @@ mat-form-field {
 .card:hover,
 .card:focus {
   transform: translateY(-1em);
+
 }
 
 .card-body {
@@ -109,6 +110,13 @@ mat-form-field {
   font-weight: bold;
   text-shadow: 0.06em 0.06em 0em lightgray;
   color: #875ae0;
+  overflow: hidden;
+  display: inline-block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+  margin: auto 3em;
+  text-align: center;
 }
 
 h2 {
@@ -140,4 +148,22 @@ h2 {
 
 .most {
   background: rgba(255, 159, 64, 0.2)
+}
+
+
+
+
+@media screen and (min-width: 1020px) {
+  .divChart {
+    width: 55%;
+  }
+
+  .divChart2 {
+    height: 35%;
+    width: 75%;
+  }
+
+
+
+
 }

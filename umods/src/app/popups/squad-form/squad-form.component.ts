@@ -1,15 +1,12 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder, Validators, FormArray } from '@angular/forms';
-import { MatDialogRef, MatDialogConfig } from '@angular/material/dialog';
+import { MatDialogRef } from '@angular/material/dialog';
 import { Forms } from '../../service/forms.service';
 import { AuthService } from '../../service/auth.service';
 import { CrudService } from '../../service/crud.service';
 import { Icons } from '../../service/icons.service'
 import { CurrentUser } from '../../service/currentUser.service';
-import { MatChipInputEvent } from '@angular/material/chips';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatDialog } from '@angular/material/dialog';
-import { FormsModule } from '@angular/forms'
 
 
 
@@ -50,6 +47,7 @@ export class SquadFormComponent implements OnInit {
 
   ngOnInit(): void {
 
+
     this.editmode = this.formService.editSquad
     this.deletemode = this.formService.deleteSquad
     this.squads = this.userService.squads
@@ -66,42 +64,16 @@ export class SquadFormComponent implements OnInit {
 
   async onSubmit() {
 
-    // get err msg element from the DOM
-    let errDisplay = this.errMsg.nativeElement
+
 
     await this.formService.onSubmitSquad()
-
-    // get register output
-    this.errOutput = this.formService.regSquadErrOutput;
-
-    // if register succesfull
-    if (this.formService.regSquadSucces) {
-
-      // show succes msg
-      errDisplay.style.color = '#2bba00';
-      errDisplay.style.display = 'block';
-
-      // hide succes msg after 2 sec + close register popup
-      setTimeout(() => {
-        errDisplay.style.display = 'none';
-
-        this.onClose()
-      }, 2000);
-
-    } else {
-      // if register unsuccesfull
-
-      // show err msg
-      errDisplay.style.display = 'block';
-
-      // hide err msg
-      setTimeout(() => {
+    this.formService.onCloseSquad();
+    this.onClose()
+    this.dialogRef.close();
 
 
-        errDisplay.style.display = 'none';
-      }, 3000)
 
-    }
+
 
 
   }
@@ -110,8 +82,13 @@ export class SquadFormComponent implements OnInit {
   onClose() {
     this.formService.editSquad = false;
     this.formService.deleteSquad = false;
-    this.formService.onCloseSquad();
-    this.dialogRef.close();
+    //this.formService.onCloseSquad();
+    this.formService.closeSquadForm.asObservable().subscribe(() => {
+      this.authService.getUserData(this.userService.id)
+      console.log('close me');
+      this.dialogRef.close();
+    })
+
 
 
   }
@@ -130,7 +107,7 @@ export class SquadFormComponent implements OnInit {
 
   selectedSq(squad) {
 
-    console.log("d")
+
     // get the squad
     this.currentSquad = squad
 

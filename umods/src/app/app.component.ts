@@ -1,8 +1,4 @@
-import { Component, ComponentFactoryResolver, ViewChild, ViewContainerRef } from '@angular/core'
-import { Router } from "@angular/router"
-import { DynamicComponent } from './dynamic/dynamic.component';
-
-import { AuthService } from './service/auth.service';
+import { Component } from '@angular/core'
 
 import * as firebase from 'firebase';
 

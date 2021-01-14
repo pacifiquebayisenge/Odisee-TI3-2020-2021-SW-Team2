@@ -1,10 +1,6 @@
 
 import { Injectable } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
-import { Observable, BehaviorSubject } from 'rxjs';
-
-import { AngularFirestore } from '@angular/fire/firestore';
-import { trigger } from '@angular/animations';
+import { BehaviorSubject } from 'rxjs';
 
 
 

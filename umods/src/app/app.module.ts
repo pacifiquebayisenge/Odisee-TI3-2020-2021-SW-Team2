@@ -42,7 +42,8 @@ import { CurrentUser } from './service/currentUser.service';
 import { Icons } from './service/icons.service';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import { Naming } from './Service/page.service'
+import { Naming } from './Service/page.service';
+import { ScheduleModule, RecurrenceEditorModule, DayService, WeekService, WorkWeekService, MonthService, MonthAgendaService } from '@syncfusion/ej2-angular-schedule'
 
 
 
@@ -68,6 +69,7 @@ import { Naming } from './Service/page.service'
     SquadFormComponent,
     MainNavComponent,
     OverviewPageComponent
+
 
 
 
@@ -104,6 +106,9 @@ import { Naming } from './Service/page.service'
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
 
 
+    ScheduleModule, RecurrenceEditorModule,
+
+
 
   ],
 
@@ -115,6 +120,12 @@ import { Naming } from './Service/page.service'
     Icons,
     AngularFirestoreModule,
     AngularFirestore,
+    //calandar
+    DayService,
+    WeekService,
+    WorkWeekService,
+    MonthService,
+    MonthAgendaService
   ],
   bootstrap: [AppComponent],
   entryComponents: [SquadFormComponent]

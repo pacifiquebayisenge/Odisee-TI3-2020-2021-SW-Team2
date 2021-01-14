@@ -5,10 +5,11 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatTabsModule } from '@angular/material/tabs';
 
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
-
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -36,7 +37,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatSidenavModule,
     MatTableModule,
     MatFormFieldModule,
-    MatMenuModule
+    MatMenuModule,
+    MatSnackBarModule,
+    MatTabsModule
   ],
   exports: [
     CommonModule,
@@ -52,7 +55,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatSidenavModule,
     MatTableModule,
     MatFormFieldModule,
-    MatMenuModule
+    MatMenuModule,
+    MatSnackBarModule,
+    MatTabsModule
   ]
 })
 export class MaterialModule { }

@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Naming } from '../../service/page.service';
-import { Chart } from 'chart.js'
+import { Chart } from 'chart.js';
+
+import { Router } from '@angular/router';
 
 import { CurrentUser } from 'src/app/service/currentUser.service';
 import { Forms } from '../../service/forms.service';
 
 import { CrudService } from 'src/app/service/crud.service';
-import { from } from 'rxjs';
-
 
 
 
@@ -22,9 +22,11 @@ export class OverviewPageComponent implements OnInit {
     private service: Naming,
     private currentUser: CurrentUser,
     public formService: Forms,
-    private crudService: CrudService) { }
+    private crudService: CrudService,
+    private router: Router) { }
 
   pageTittle: string = "Overview";
+
 
   allSquads: Array<any> = this.currentUser.squads
   allCurrentTasks: number;
@@ -41,6 +43,14 @@ export class OverviewPageComponent implements OnInit {
     // method to change page tittle to the page name
     this.service.changeTittle(this.pageTittle)
 
+    // if squads data not loaded redirect tot home page
+    if (this.allSquads.length == 0) {
+      console.log("empty redirect me ")
+      this.router.navigate(['']);
+    }
+
+
+
 
   }
 
@@ -49,6 +59,7 @@ export class OverviewPageComponent implements OnInit {
   chartLoad(squadId: string) {
 
     // to use ths , we need to have some onderscheid tussen open and closed tasks 
+
 
 
 
@@ -67,6 +78,7 @@ export class OverviewPageComponent implements OnInit {
         // get alle data van deze squad 
         squadData = this.allSquads[i]
         this.allCurrentTasks = squadData[2].length;
+
 
         // onderscheid tussen open en closed tasks
         for (let k = 0; k < squadData[2].length; k++) {
@@ -117,15 +129,16 @@ export class OverviewPageComponent implements OnInit {
 
   async MemberChart(squad: Array<any>) {
 
-
+    console.log(squad)
     this.AllCurrentMembers = squad[1].Members.length;
     let membersNames: Array<any> = [];
     let allMemberTask: Array<any> = [];
     let count = 0;
 
+    console.log(squad)
 
     for (let i: number = 0; i < squad[1].Members.length; i++) {
-      membersNames.push(squad[1].Members[i].name)
+      membersNames.push(squad[1].Members[i].name + ' ' + squad[1].Members[i].lastname)
     }
 
 
@@ -194,6 +207,7 @@ export class OverviewPageComponent implements OnInit {
         maintainAspectRatio: false,
         responsive: true,
 
+
         scales: {
           xAxes: [{
             ticks: {
@@ -201,9 +215,7 @@ export class OverviewPageComponent implements OnInit {
             }
 
           }],
-          yAxes: [{
-
-          }]
+          yAxes: [{ ticks: { mirror: true } }]
 
         }
 
@@ -326,11 +338,7 @@ export class OverviewPageComponent implements OnInit {
         maintainAspectRatio: false,
         responsive: true,
         scales: {
-          yAxes: [{
-
-
-
-          }],
+          yAxes: [{ ticks: { mirror: true } }],
           xAxes: [{
 
             ticks: {

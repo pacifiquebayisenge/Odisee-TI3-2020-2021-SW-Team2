@@ -1,6 +1,6 @@
 // forms.service.ts
 import { Injectable } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder, Validators, FormArray, Form } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { AuthService } from './auth.service';
 import { MatchService } from './match.service'
 import { CurrentUser } from './currentUser.service';
@@ -9,11 +9,9 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { LoginFormComponent } from '../popups/login-form/login-form.component';
 import { RegisterFormComponent } from '../popups/register-form/register-form.component';
-import { async } from 'q';
-import { from, Subject, Observable, BehaviorSubject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { SquadFormComponent } from '../popups/squad-form/squad-form.component';
 import { TaskFormComponent } from '../popups/task-form/task-form.component';
-import { Observer } from 'firebase';
 
 
 
@@ -182,6 +180,9 @@ export class Forms {
     SquadMembers: Array<string>;
     membersList: Array<string>
 
+    closeSquadForm = new BehaviorSubject(false)
+
+
     // squad form bindings
     squadForm = new FormGroup({
 
@@ -240,7 +241,7 @@ export class Forms {
     }
 
     async onSubmitSquad() {
-       
+
 
         // get form value
         const formValue = this.squadForm.value;
@@ -249,36 +250,41 @@ export class Forms {
 
         if (!this.editSquad) {
             console.log("formservice register")
-
-            await this.crudService.RegisterSquad(
+            this.onCloseSquad();
+            this.closeSquadForm.next(true);
+            this.crudService.RegisterSquad(
                 formValue["name"],
                 formValue["members"],
-                formValue["icon"])
+                formValue["icon"]);
+            this.onCloseSquad();
+
         }
         else {
             console.log("formservice edit")
-            this.crudService.editSquad(formValue, this.membersList, this.squadToEditId)
-        }
-
-        this.regSquadSucces = this.crudService.regSquadSucces;
-        this.regSquadErrOutput = this.crudService.errOutput;
-
-        if (this.regSquadSucces) {
             this.onCloseSquad();
+            await this.crudService.editSquad(formValue, this.membersList, this.squadToEditId)
+            this.onCloseSquad();
+
         }
-        
+
+
+
 
     }
 
 
-    onCloseSquad() {
-
+    async onCloseSquad() {
+        await this.authService.getUserData(this.currentUser.id)
+        await this.authService.userDataRefresh(this.currentUser.id)
+        this.closeSquadForm.next(true);
         this.editSquad = false
         this.deleteSquad = false
 
         this.squadForm.reset();
-        
-         this.authService.getUserData(this.currentUser.id)
+
+
+
+
 
 
 
@@ -288,6 +294,8 @@ export class Forms {
 
     onEditSquad(squad: Array<any>, membersList: Array<string>) {
 
+
+        console.log(membersList)
         this.membersList = membersList
         this.SquadMembers = []
         this.squadForm.reset();
@@ -304,11 +312,6 @@ export class Forms {
             this.SquadMembers.push(squad[1].Members[i])
 
         }
-
-
-
-
-
     }
 
 
@@ -381,6 +384,7 @@ export class Forms {
     }
 
 
+    closeTaskForm = new BehaviorSubject<boolean>(false)
 
     async  onSubmitTask() {
         // get form value
@@ -389,6 +393,8 @@ export class Forms {
         // kijk na of een task wordt mee geven, in geval van ja update ipv creëren 
         if (this.taskToEdit == null) {
 
+            this.oncloseTask();
+            this.closeTaskForm.next(true)
             await this.crudService.newTask(
                 this.currentSquadId,
                 formValue.title,
@@ -398,6 +404,8 @@ export class Forms {
                 this.currentUser.firstname)
 
         } else {
+            this.oncloseTask();
+            this.closeTaskForm.next(true)
             await this.crudService.editTask(
                 this.currentSquadId,
                 this.taskToEdit.Id,
@@ -471,6 +479,8 @@ export class Forms {
 
     }
 
+
+    //edit task
 
 
 
