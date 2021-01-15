@@ -1,0 +1,92 @@
+/*
+:host {
+  height: 20vw;
+  width: 20vw;
+  border: 1pt solid black;
+  margin: 1em;
+}
+*/
+:host {
+
+  /*
+  display: flex;
+  justify-content: center;
+  flex-direction: column-reverse;
+*/
+  height: 120vw;
+  width: 100%;
+}
+
+.page-header {
+  text-align: center;
+  font-size: 2em;
+  font-weight: bolder;
+
+  text-shadow: 0.06em 0.06em 0em darkgrey;
+  color: #7a7a8c;
+}
+
+.page-content {
+
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+
+img {
+  position: relative;
+  width: 80%;
+  /* height: 70%; */
+  /* text-align: center; */
+  /* justify-content: center; */
+  margin: 0em auto;
+  height: "100%"
+}
+
+
+button {
+  width: fit-content;
+  height: fit-content;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  /* vanaf device width kleiner dan 373 
+    1 kolom ipv gewenste 2/3/4
+    fix met media qeuries
+    */
+}
+
+.list::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+
+}
+
+.list::-webkit-scrollbar-thumb {
+  background: darkgray;
+  border-radius: 10px;
+  box-shadow: inset 2px 2px 2px hsla(0, 0%, 100%, .25), inset -2px -2px 2px rgba(0, 0, 0, .25);
+
+}
+
+.list::-webkit-scrollbar-track {
+
+  background: linear-gradient(90deg, #201c29, #201c29 1px, #17141d 0, #17141d);
+}
+
+.summary-container {
+  text-align: center;
+  margin: 1em;
+  color: darkgray;
+}
+
+@media screen and (min-width: 1020px) {
+  img {
+    width: unset;
+  }
+}

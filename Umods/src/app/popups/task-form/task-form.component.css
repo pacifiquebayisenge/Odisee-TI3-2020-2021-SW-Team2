@@ -1,0 +1,67 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  align-items: center;
+
+
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 1em;
+
+  padding: 2em;
+  border: 1pt lightgray solid;
+  width: 80%;
+}
+
+
+
+.ckbx {
+  margin: 1em;
+}
+
+
+.flex {
+  display: flex;
+
+}
+
+.description {
+  flex-direction: column;
+}
+
+.label {
+  margin: 1em 0.5em 1em -0.5em;
+  vertical-align: center;
+}
+
+.description {
+  flex-direction: column;
+}
+
+mat-select,
+mat-option {
+  text-align: center;
+}
+
+mat-form-field {
+  width: 90%;
+}
+
+button {
+  margin-top: 1.5em;
+}
+
+#errMsg {
+  text-align: center;
+  color: orangered;
+  font-weight: bolder;
+
+
+  display: none;
+}

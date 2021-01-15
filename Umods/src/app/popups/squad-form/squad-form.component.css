@@ -1,0 +1,110 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  align-items: center;
+  overflow: scroll;
+
+  align-self: center;
+  align-content: center;
+}
+
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 1em;
+  padding: 1.5em;
+  border: 1pt lightgray solid;
+  width: 80%;
+  overflow: scroll;
+
+}
+
+
+button {
+  margin: 1em;
+}
+
+
+
+
+.btnDelete {
+  float: right;
+  margin: 1em 0em 0em 1em;
+  width: fit-content;
+  text-align: center;
+}
+
+.btnaddMem {
+  margin: 3em 1em 3em 1em;
+}
+
+.membersEmail {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.dynamicEmailInput {
+  display: flex;
+  width: 100%;
+  max-width: fit-content;
+
+
+}
+
+.inputDiv {
+  position: relative;
+  min-width: 70%;
+}
+
+#errMsg {
+  text-align: center;
+  color: orangered;
+  font-weight: bolder;
+
+
+  display: none;
+}
+
+
+mat-select-value {
+  display: table-cell;
+  max-width: 0;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+}
+
+mat-select,
+mat-option {
+  text-align: center;
+
+}
+
+mat-form-field {
+  max-width: 90%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+
+
+}
+
+.squad-container {
+  text-align: center;
+}
+
+h2 {
+  text-align: center;
+  font-size: 2em;
+  font-weight: bolder;
+  margin: 1em;
+  text-shadow: 0.06em 0.06em 0em darkgrey;
+  color: #643cb4;
+}
