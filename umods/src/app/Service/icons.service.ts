@@ -1,5 +1,0 @@
-export class Icons {
-
-    iconNames: Array<string> = ['alarm', 'all_out', 'analytics', 'anchor', 'api', 'article', 'assessment', 'book', 'build', 'card_travel', 'commute', 'eco', 'euro_symbol', 'event_seat', 'extension', 'favorite', 'flight_land', 'flight_takeoff', 'grade', 'group_work', 'home', 'https', 'hourglass_top', 'devices', 'language', 'loyalty', 'offline_bolt', 'pets', 'request_page', 'room', 'savings', 'shopping_basket', 'tour', 'work', 'business', 'call', 'biotech', 'content_cut', 'inbox', 'insights', 'weekend', 'bedtime', 'color_lens', 'filter_vintage', 'flare', 'flash_on', 'healing', 'landscape', 'wb_cloudy', 'wb_sunny', 'directions_car', 'directions_bus', 'directions_railway', 'directions_run', 'fastfood', 'local_fire_department', 'checkroom', 'fitness_center', 'grass', 'public', 'school']
-
-}
